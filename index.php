@@ -23,6 +23,9 @@ include('database_connection.php');
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- CSS-->
         <link href="css/styles2.css" rel="stylesheet" />
+        <link href="css/dropdown_styles.css" rel="stylesheet" />
+
+        
 
 
         <!-- ChatBot -->
@@ -99,7 +102,15 @@ include('database_connection.php');
                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>                            
                                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>   
                                 <li class="nav-item"><a class="nav-link"href="login.php" title="login"><i class="fa fa-sign-in" style="font-size:30px;color:white"></i></a></li>
-                                <li class="nav-item"><a class="nav-link" href="register.php" title="Register"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                <li class="dropdown">
+                                    <div class="dropdown" style="float:left;">
+                                        <button class="dropbtn">Register</button>
+                                        <div class="dropdown-content" style="left:0;">
+                                                                <a href="student_registration.php">Student</a>
+                                                                <a href="institute_registration.php">Instructor</a>
+                                        </div>
+                                        </div>
+                                </li>
                                 <?php
 
                             }
