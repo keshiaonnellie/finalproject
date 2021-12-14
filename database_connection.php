@@ -5,3 +5,4 @@ $connect = new PDO('mysql:host=localhost;dbname=course_locator', 'root', '');
 session_start();
 
 ?>
+<!-- testing1 -->
