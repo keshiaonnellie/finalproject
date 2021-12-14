@@ -83,7 +83,7 @@ include('database_connection.php');
                                  ?>
                                  <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
                                  <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Favorite</a></li>   
                                  <li class="nav-item"><a class="nav-link" href="compair.php">Compair</a></li>  
