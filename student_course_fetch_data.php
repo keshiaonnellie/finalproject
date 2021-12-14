@@ -7,7 +7,10 @@ include('database_connection.php');
 if(isset($_POST["action"]))
 {
 	$query = "
-		SELECT * FROM course WHERE course_status = 'active'
+		SELECT  course.course_name, course.course_fee, course.course_description, course.course_date, course.semester_fee, institute.institute_name
+		FROM course
+		INNER JOIN institute
+		ON course.institute_id=institute.institute_id WHERE course_status = 'active'
 	";
 	if(isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"]))
 	{
@@ -15,6 +18,7 @@ if(isset($_POST["action"]))
 		 AND course_fee BETWEEN '".$_POST["minimum_price"]."' AND '".$_POST["maximum_price"]."'
 		";
 	}
+	
 	if(isset($_POST["type"]))
 	{
 		$course_filter = implode("','", $_POST["type"]);
@@ -44,7 +48,7 @@ if(isset($_POST["action"]))
 	{
 		$course_filter = implode("','", $_POST["Institute"]);
 		$query .= "
-		 AND institute_id IN('".$course_filter."')
+		 AND course.institute_id IN('".$course_filter."')
 		";
 	}
 
@@ -64,6 +68,7 @@ if(isset($_POST["action"]))
 					<p align="center"><strong><h4 href="#">'. $row['course_name'] .'</h4></strong></p>
 					<h4 style="text-align:center;" class="text-danger" >'. $row['course_fee'] .' Rs.</h4>
 					<p><b>Description :</b><br> '. $row['course_description'].' <br><br>
+					<b>Institute :</b><br> '. $row['institute_name'] .' <br><br>
 					<b>Course Date :</b><br> '. $row['course_date'] .' <br><br>
 					<b>Semester Fee :</b> '. $row['semester_fee'] .' Rs.<br>
 				</div>
