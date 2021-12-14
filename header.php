@@ -65,7 +65,6 @@
                             {
                             ?>
                             <li><a href="index.php">Home</a></li>
-                            
                             <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li>
                             <li class="nav-item"><a class="nav-link" href="domian.php">Institutes</a></li>
                             <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
@@ -84,6 +83,29 @@
                             <?php
                             }
                             ?>  
+
+                            <?php
+                           if($_SESSION['type'] == 'Instructor')
+                           {
+                           ?>
+                            <li><a href="index.php">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
+                            <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                            <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload Bulk Institutes</a></li>   
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo $_SESSION["user_name"]; ?></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.php">Profile</a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+                            </li>
+
+                            <?php
+                            }
+                            ?>
+
                         </ul>
                         
                         

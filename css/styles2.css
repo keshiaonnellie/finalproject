@@ -11313,7 +11313,7 @@ html {
   position: absolute;
   left: 8%;
   margin-left: -3px;
-  top: 500px;
+  top: 900px;
   padding-right: 30px;
 }
 
@@ -11364,7 +11364,6 @@ color: #6BA0D5;
 
 
 
-}
 .contact_box i.fa {
   color: black;
   font-size: 30px;
