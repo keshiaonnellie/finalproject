@@ -73,6 +73,22 @@ function get_user_name($connect, $user_id)
 	}
 }
 
-
+function fill_subdomain_list($connect)
+{
+	$query = "
+	SELECT * FROM subdomain
+	WHERE subdomain_status = 'active' 
+	ORDER BY subdomain_name ASC
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$output = '';
+	foreach($result as $row)
+	{
+		$output .= '<option value="'.$row["subdomain_id"].'">'.$row["subdomain_name"].'</option>';
+	}
+	return $output;
+}
 
 ?>
