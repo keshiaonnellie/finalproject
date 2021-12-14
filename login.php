@@ -5,7 +5,7 @@ include('database_connection.php');
 
 if(isset($_SESSION['type']))
 {
-	header("location:user.php");
+	header("location:index.php");
 }
 
 $message = '';
@@ -36,7 +36,7 @@ if(isset($_POST["login"]))
 					$_SESSION['type'] = $row['user_type'];
 					$_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['user_name'] = $row['user_name'];
-					header("location:user.php");
+					header("location:index.php");
 				}
 				else
 				{
