@@ -306,7 +306,7 @@ input[type="submit"]{
 	width: 1000px;
 	height: 80vh;
 	position: fixed;
-	bottom: 100px;s
+	bottom: 100px;
 	right: 30px;
 	background:#dedede;
 	z-index: 1000;
@@ -334,7 +334,7 @@ input[type="submit"]{
   position: absolute;
   left: 8%;
   margin-left: -3px;
-  top: 600px;
+  top: 495px;
   padding-right: 30px;
 }
 

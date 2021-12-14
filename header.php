@@ -34,16 +34,7 @@
                     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        <ul class="nav navbar-nav navbar-right ">        
 
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo $_SESSION["user_name"]; ?></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="profile.php">Profile</a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
-                            </li>
-                        </ul>
 
                         <ul class="nav navbar-nav navbar-right">
                            <?php
@@ -57,7 +48,13 @@
                             <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
                             <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
                             <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload Bulk Institutes</a></li>   
-                            
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo $_SESSION["user_name"]; ?></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.php">Profile</a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+                            </li>
 
                             <?php
                             }

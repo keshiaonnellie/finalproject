@@ -1,3 +1,13 @@
+<?php
+//index.php
+
+include('database_connection.php');
+
+
+
+
+?>	
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +35,8 @@
         <!-- f css -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <!-- f css -->
-        
+                <!-- JS -->
+
         <!-- ChatBot -->
 
     </head>
@@ -35,33 +46,73 @@
         <main class="flex-shrink-0">
 
             <!-- Navigation-->
-
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.php"><img src="East.png" height="70px" width="180px"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="index.php"><img src="East.png" height="50px" width="120px"></a>
+                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#about_us">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="user.php">Users</a></li>
-                            <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
-                            <li class="nav-item"><a class="nav-link" href="domian.php">Domains</a></li>
-                            <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li>
-                            <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li>
-                            <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Bulk Uploader</a></li>
-                            <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>    
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="student_registration.php">Register as a Student</a></li>
-                                    <li><a class="dropdown-item" href="institute_registration.php">Register as an Instructor</a></li>
-                                </ul>
-                            </li>
+
+
+
+                        <ul class="nav navbar-nav navbar-right">
+                           <?php
+                            if(isset($_SESSION["type"]))
+                            {
+                                if($_SESSION['type'] == 'Admin')
+                                {
+                                ?>
+                                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="user.php">Users</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
+                                 <li class="nav-item"><a class="nav-link"href="profile.php"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+     
+     
+     
+                                 <?php
+                                 }else if($_SESSION['type'] == 'Student')
+                                 {
+                                 ?>
+                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Favorite</a></li>   
+                                 <li class="nav-item"><a class="nav-link" href="compair.php">Compair</a></li>  
+                                 <li class="nav-item"><a class="nav-link" href="profile.php" title="Profile"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="logout.php" title="Loguot"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                 <?php
+                                 }
+
+
+                            }else{
+                                ?>  
+
+   
+                                <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                                <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>                            
+                                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>   
+                                <li class="nav-item"><a class="nav-link"href="login.php" title="login"><i class="fa fa-sign-in" style="font-size:30px;color:white"></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="register.php" title="Register"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                <?php
+
+                            }
+
+
+
+                            ?>  
                         </ul>
+                        
+                        
                     </div>
                 </div>
             </nav>
+
 
             <!-- Header-->
 
