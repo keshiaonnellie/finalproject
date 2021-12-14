@@ -13,14 +13,15 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO course (course_type_id, domain_id, course_name, institute_id, course_description, course_duration, duration_type, course_fee, semester_fee, course_enter_by, course_status, course_date) 
-		VALUES (:course_type_id, :domain_id, :course_name, :institute_id, :course_description, :course_duration, :duration_type, :course_fee, :semester_fee, :course_enter_by, :course_status, :course_date)
+		INSERT INTO course (course_type_id, domain_id, subdomain_id, course_name, institute_id, course_description, course_duration, duration_type, course_fee, semester_fee, course_enter_by, course_status, course_date) 
+		VALUES (:course_type_id, :domain_id, :subdomain_id, :course_name, :institute_id, :course_description, :course_duration, :duration_type, :course_fee, :semester_fee, :course_enter_by, :course_status, :course_date)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':course_type_id'		=>	$_POST['course_type_id'],
 				':domain_id'			=>	$_POST['domain_id'],
+				':subdomain_id'			=>	$_POST['subdomain_id'],
 				':course_name'			=>	$_POST['course_name'],
 				':institute_id'			=>	$_POST['institute_id'],
 				':course_description'	=>	$_POST['course_description'],
@@ -45,6 +46,7 @@ if(isset($_POST['btn_action']))
 		SELECT * FROM course 
 		INNER JOIN course_type ON course_type.course_type_id = course.course_type_id 
 		INNER JOIN domain ON domain.domain_id = course.domain_id 
+		INNER JOIN subdomain ON subdomain.subdomain_id = course.subdomain_id 
 		INNER JOIN institute ON institute.institute_id = course.institute_id
 		INNER JOIN user_details ON user_details.user_id = course.course_enter_by 
 		WHERE course.course_id = '".$_POST["course_id"]."'
@@ -83,6 +85,10 @@ if(isset($_POST['btn_action']))
 			<tr>
 				<td>Domain Name</td>
 				<td>'.$row["domain_name"].'</td>
+			</tr>
+			<tr>
+				<td>Sub Domain Name</td>
+				<td>'.$row["subdomain_name"].'</td>
 			</tr>
 			<tr>
 				<td>Institute Name</td>
@@ -132,6 +138,7 @@ if(isset($_POST['btn_action']))
 		{
 			$output['course_type_id'] = $row['course_type_id'];
 			$output['domain_id'] = $row['domain_id'];
+			$output['subdomain_id'] = $row['subdomain_id'];
 			$output['course_name'] = $row['course_name'];
 			$output['institute_id'] = $row['institute_id'];
 			$output['course_description'] = $row['course_description'];
@@ -150,6 +157,7 @@ if(isset($_POST['btn_action']))
 		UPDATE course 
 		set course_type_id = :course_type_id, 
 		domain_id = :domain_id,
+		subdomain_id = :subdomain_id,
 		course_name = :course_name,
 		institute_id= :institute_id,
 		course_description = :course_description, 
@@ -164,6 +172,7 @@ if(isset($_POST['btn_action']))
 			array(
 				':course_type_id'		=>	$_POST['course_type_id'],
 				':domain_id'			=>	$_POST['domain_id'],
+				':subdomain_id'			=>	$_POST['subdomain_id'],
 				':course_name'			=>	$_POST['course_name'],
 				':institute_id'			=>	$_POST['institute_id'],
 				':course_description'	=>	$_POST['course_description'],

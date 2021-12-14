@@ -65,6 +65,7 @@ include('database_connection.php');
                                  <li class="nav-item"><a class="nav-link" href="user.php">Users</a></li>
                                  <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
                                  <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="subdomain.php">Sub Domains</a></li>
                                  <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
