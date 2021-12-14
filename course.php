@@ -9,10 +9,10 @@ if(!isset($_SESSION["type"]))
     header('location:login.php');
 }
 
-if($_SESSION['type'] != 'Admin')
-{
-    header('location:user.php');
-}
+// if($_SESSION['type'] != 'Admin')
+// {
+//     header('location:user.php');
+// }
 
 include('header.php');
 
