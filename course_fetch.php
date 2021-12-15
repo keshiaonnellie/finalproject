@@ -12,6 +12,7 @@ $query .= "
 SELECT * FROM course 
 INNER JOIN course_type ON course_type.course_type_id = course.course_type_id
 INNER JOIN domain ON domain.domain_id = course.domain_id
+INNER JOIN subdomain ON subdomain.subdomain_id = course.subdomain_id
 INNER JOIN institute ON institute.institute_id = course.institute_id 
 INNER JOIN user_details ON user_details.user_id = course.course_enter_by 
 ";
@@ -20,6 +21,7 @@ if(isset($_POST["search"]["value"]))
 {
 	$query .= 'WHERE domain.domain_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR course_type.course_type_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR subdomain.subdomain_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR course.course_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR institute.institute_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR course.course_duration LIKE "%'.$_POST["search"]["value"].'%" ';
@@ -60,6 +62,7 @@ foreach($result as $row)
 	$sub_array[] = $row['course_id'];
 	$sub_array[] = $row['course_type_name'];
 	$sub_array[] = $row['domain_name'];
+	$sub_array[] = $row['subdomain_name'];
 	$sub_array[] = $row['course_name'];
 	$sub_array[] = $row['institute_name'];
 	$sub_array[] = $row["course_duration"]. ' ' . $row["duration_type"];

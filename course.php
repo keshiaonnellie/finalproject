@@ -9,10 +9,10 @@ if(!isset($_SESSION["type"]))
     header('location:login.php');
 }
 
-if($_SESSION['type'] != 'Admin')
-{
-    header('location:user.php');
-}
+// if($_SESSION['type'] != 'Admin')
+// {
+//     header('location:user.php');
+// }
 
 include('header.php');
 
@@ -41,6 +41,7 @@ include('header.php');
                                     <th>ID</th>
                                     <th>Course Type</th>
                                     <th>Course Domain</th>
+                                    <th>Course Sub Domain</th>
                                     <th>Course Name</th>
                                     <th>Institute Name</th>
                                     <th>Course Duration</th>
@@ -81,6 +82,14 @@ include('header.php');
                                 </select>
                             </div>
 
+
+                            <div class="form-group">
+                                <label>Select Sub Domain</label>
+                                <select name="subdomain_id" id="subdomain_id" class="form-control" required>
+                                    <option value="">Select Sub Domain</option>
+                                    <?php echo fill_subdomain_list($connect);?>
+                                </select>
+                            </div>
 
                              <div class="form-group">
                                 <label>Select Institute</label>
@@ -166,7 +175,7 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
-                "targets":[8, 9, 10],
+                "targets":[9, 10, 11],
                 "orderable":false,
             },
         ],
@@ -234,6 +243,7 @@ $(document).ready(function(){
                 $('#courseModal').modal('show');
                 $('#course_type_id').val(data.course_type_id);
                 $('#domain_id').val(data.domain_id);
+                $('#subdomain_id').val(data.subdomain_id);
                 $('#course_name').val(data.course_name);
                 $('#institute_id').val(data.institute_id);
                 $('#course_description').val(data.course_description);

@@ -23,6 +23,9 @@ include('database_connection.php');
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- CSS-->
         <link href="css/styles2.css" rel="stylesheet" />
+        <link href="css/dropdown_styles.css" rel="stylesheet" />
+
+        
 
 
         <!-- ChatBot -->
@@ -65,6 +68,7 @@ include('database_connection.php');
                                  <li class="nav-item"><a class="nav-link" href="user.php">Users</a></li>
                                  <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
                                  <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="subdomain.php">Sub Domains</a></li>
                                  <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
@@ -77,14 +81,30 @@ include('database_connection.php');
                                  }else if($_SESSION['type'] == 'Student')
                                  {
                                  ?>
-                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                                  <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="subdomain.php">Sub Domains</a></li>
                                  <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
-                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Favorite</a></li>   
-                                 <li class="nav-item"><a class="nav-link" href="compair.php">Compair</a></li>  
-                                 <li class="nav-item"><a class="nav-link" href="profile.php" title="Profile"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
-                                 <li class="nav-item"><a class="nav-link" href="logout.php" title="Loguot"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
+                                 <li class="nav-item"><a class="nav-link"href="profile.php"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                 
+
+                                 <?php
+                                 }else if($_SESSION['type'] == 'Instructor')
+                                 {
+                                 ?>
+                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="subdomain.php">Sub Domains</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
+                                 <li class="nav-item"><a class="nav-link"href="profile.php"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
                                  <?php
                                  }
 
@@ -98,7 +118,15 @@ include('database_connection.php');
                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>                            
                                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>   
                                 <li class="nav-item"><a class="nav-link"href="login.php" title="login"><i class="fa fa-sign-in" style="font-size:30px;color:white"></i></a></li>
-                                <li class="nav-item"><a class="nav-link" href="register.php" title="Register"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                <li class="dropdown">
+                                    <div class="dropdown" style="float:left;">
+                                        <button class="dropbtn">Register</button>
+                                        <div class="dropdown-content" style="left:0;">
+                                                                <a href="student_registration.php">Student</a>
+                                                                <a href="institute_registration.php">Instructor</a>
+                                        </div>
+                                        </div>
+                                </li>
                                 <?php
 
                             }
