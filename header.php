@@ -66,7 +66,7 @@
                             ?>
                             <li><a href="index.php">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li>
-                            <li class="nav-item"><a class="nav-link" href="domian.php">Institutes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="student_institute.php">Institutes</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li>  -->
                             <li class="nav-item"><a class="nav-link" href="institute.php">Favorite</a></li> 
                             <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Compare Courses</a></li>  
