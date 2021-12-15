@@ -16,7 +16,10 @@ if(isset($_POST)){
 
 
 	$institute_name 		= $_POST['institute_name'];
+	$institute_type		    = $_POST['institute_type'];
+	$institute_contact		= $_POST['institute_contact'];
 	$institute_address 		= $_POST['institute_address'];
+	$institute_city 		= $_POST['institute_city'];
 	$institute_description 	= $_POST['institute_description'];
 	$institute_status 		= $_POST['institute_status'];
 
@@ -25,11 +28,11 @@ if(isset($_POST)){
 	
 
 		$sql = "INSERT INTO user_details (user_email, user_password, user_name, user_type, user_status) VALUES(?,?,?,?,?)";
-		$sql1 = "INSERT INTO institute (institute_name, institute_address, institute_description, institute_status) VALUES(?,?,?,?)";
+		$sql1 = "INSERT INTO institute (institute_name, institute_type, institute_contact, institute_address, institute_city, institute_description, institute_status) VALUES(?,?,?,?,?,?,?)";
 		$stmtinsert = $db->prepare($sql);
 		$stmtinsert1 = $db->prepare($sql1);
 		$result = $stmtinsert->execute([$user_email, $user_password, $user_name, $user_type, $user_status]);
-		$result1 = $stmtinsert1->execute([$institute_name, $institute_address, $institute_description, $institute_status]);
+		$result1 = $stmtinsert1->execute([$institute_name, $institute_type, $institute_contact, $institute_address, $institute_city, $institute_description, $institute_status]);
 		if($result && $result1){
 			echo 'Successfully saved.';
 		}else{
