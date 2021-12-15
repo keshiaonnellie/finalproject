@@ -9,14 +9,17 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO institute (institute_name, institute_address, institute_description,institute_status) 
-		VALUES (:institute_name, :institute_address,:institute_description,:institute_status)
+		INSERT INTO institute (institute_name, institute_type, institute_contact, institute_address, institute_city, institute_description,institute_status) 
+		VALUES (:institute_name, :institute_type, :institute_contact, :institute_address, :institute_city, :institute_description,:institute_status)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':institute_name'			=>	$_POST["institute_name"],
+				':institute_type'			=>	$_POST["institute_type"],
+				':institute_contact'		=>	$_POST["institute_contact"],
 				':institute_address'		=>	$_POST["institute_address"],
+				':institute_city'			=>	$_POST["institute_city"],
 				':institute_description'	=>	$_POST["institute_description"],	
 				':institute_status'			=>	'Active'					 
 			)
@@ -43,7 +46,10 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['institute_name'] = $row['institute_name'];
+			$output['institute_type'] = $row['institute_type'];
+			$output['institute_contact'] = $row['institute_contact'];
 			$output['institute_address'] = $row['institute_address'];
+			$output['institute_city'] = $row['institute_city'];
 			$output['institute_description'] = $row['institute_description'];
 			
 		}
@@ -54,17 +60,23 @@ if(isset($_POST['btn_action']))
 		$query = "
 		UPDATE institute set 
 		institute_name = :institute_name, 
+		institute_type = :institute_type,
+		institute_contact = :institute_contact,
 		institute_address = :institute_address, 
+		institute_city = :institute_city,
 		institute_description = :institute_description
 		WHERE institute_id = :institute_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':institute_name'	=>	$_POST["institute_name"],
+				':institute_name'		=>	$_POST["institute_name"],
+				':institute_type'		=>	$_POST["institute_type"],
+				':institute_contact'	=>	$_POST["institute_contact"],
 				':institute_address'	=>	$_POST["institute_address"],
+				':institute_city'		=>	$_POST["institute_city"],
 				':institute_description'	=>	$_POST["institute_description"],
-				':institute_id'		=>	$_POST["institute_id"]
+				':institute_id'			=>	$_POST["institute_id"]
 			)
 		);
 		$result = $statement->fetchAll();

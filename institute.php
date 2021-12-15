@@ -38,7 +38,10 @@ include('header.php');
 							<tr>
 								<th>ID</th>
 								<th>Institute Name</th>
+								<th>Institute Type</th>
+								<th>Institute Contact</th>
 								<th>Institute Address</th>
+								<th>Institute City</th>
 								<th>Institute Description</th>
 								<th>Status</th>
 								<th>Edit</th>
@@ -66,10 +69,27 @@ include('header.php');
 							<input type="text" name="institute_name" id="institute_name" class="form-control" required />
 
     					</div>
+						<div class="form-group">
+
+    						<label>Enter Institute Type</label>
+							<input type="text" name="institute_type" id="institute_type" class="form-control" required />
+
+    					</div>
+						<div class="form-group">
+
+    						<label>Enter Institute Contact Number</label>
+							<input type="text" name="institute_contact" id="institute_contact" class="form-control" required />
+
+    					</div>
     					<div class="form-group">
 
 							<label>Enter Institute Address</label>
 							<input type="text" name="institute_address" id="institute_address" class="form-control" required />
+						</div>
+						<div class="form-group">
+
+							<label>Enter Institute City</label>
+							<input type="text" name="institute_city" id="institute_city" class="form-control" required />
 						</div>
 						<div class="form-group">
 
@@ -133,7 +153,10 @@ $(document).ready(function(){
 			{
 				$('#instituteModal').modal('show');
 				$('#institute_name').val(data.institute_name);
+				$('#institute_type').val(data.institute_type);
+				$('#institute_contact').val(data.institute_contact);
 				$('#institute_address').val(data.institute_address);
+				$('#institute_city').val(data.institute_city);
 				$('#institute_description').val(data.institute_description);
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Institute");
 				$('#institute_id').val(institute_id);
@@ -179,7 +202,7 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"targets":[5, 6],
+				"targets":[8, 9],
 				"orderable":false,
 			},
 		],

@@ -112,7 +112,7 @@ include('database_connection.php');
 
    
                                 <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="student_institute.php">Institutes</a></li> 
                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>                            
                                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>   
                                 <li class="nav-item"><a class="nav-link"href="login.php" title="login"><i class="fa fa-sign-in" style="font-size:30px;color:white"></i></a></li>

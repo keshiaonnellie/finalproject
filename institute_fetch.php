@@ -15,7 +15,10 @@ SELECT * FROM institute
 if(isset($_POST["search"]["value"]))
 {
 	$query .= 'WHERE institute.institute_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR institute.institute_type LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR institute.institute_contact LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR institute.institute_address LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR institute.institute_city LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR institute.institute_description LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR institute.institute_status LIKE "%'.$_POST["search"]["value"].'%" ';
 }
@@ -58,7 +61,10 @@ foreach($result as $row)
 	$sub_array = array();
 	$sub_array[] = $row['institute_id'];
 	$sub_array[] = $row['institute_name'];
+	$sub_array[] = $row['institute_type'];
+	$sub_array[] = $row['institute_contact'];
 	$sub_array[] = $row['institute_address'];
+	$sub_array[] = $row['institute_city'];
 	$sub_array[] = $row['institute_description'];
 	$sub_array[] = $status;
 	$sub_array[] = '<button type="button" name="update" id="'.$row["institute_id"].'" class="btn btn-warning btn-xs update">Update</button>';
