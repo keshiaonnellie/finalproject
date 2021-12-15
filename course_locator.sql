@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 02:33 PM
+-- Generation Time: Dec 15, 2021 at 12:50 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -41,6 +41,7 @@ CREATE TABLE `course` (
   `course_id` int(11) NOT NULL,
   `course_type_id` int(11) NOT NULL,
   `domain_id` int(11) NOT NULL,
+  `subdomain_id` int(11) NOT NULL,
   `course_name` varchar(300) NOT NULL,
   `institute_id` int(30) NOT NULL,
   `course_description` text NOT NULL,
@@ -57,19 +58,14 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `course_type_id`, `domain_id`, `course_name`, `institute_id`, `course_description`, `course_duration`, `duration_type`, `course_fee`, `semester_fee`, `course_enter_by`, `course_status`, `course_date`) VALUES
-(62, 16, 32, 'Marketing Degree', 3, 'This is a 3 years degree.', 3, 'Years', 1000000.00, 20000.00, 20, 'active', '2021-09-24'),
-(63, 16, 39, 'Degree in Economics', 3, 'This is a 2 years degree.', 2, 'Years', 74444000.00, 50000.00, 20, 'active', '2021-09-24'),
-(64, 25, 34, 'Engineering Dimploma', 5, 'A good course for students who are seeking to be engineers.', 24, 'Months', 12000000.00, 40000.00, 20, 'active', '2021-09-24'),
-(65, 25, 39, 'Diploma in Economics', 9, 'This is a good diploma', 4, 'Months', 670000.00, 500000.00, 20, 'active', '2021-09-24'),
-(79, 17, 42, 'rocket science', 3, 'Good one', 4, 'Years', 67000000.00, 670000.00, 20, 'active', '2021-09-25'),
-(83, 30, 45, 'Test Course', 14, 'Test Description', 24, 'Months', 2500000.00, 20000.00, 20, 'active', '2021-09-25'),
-(84, 24, 32, 'Certification in Marketing', 3, 'A good certificate', 3, 'Year', 4500000.00, 35000.00, 20, 'active', NULL),
-(85, 18, 33, 'MSC - IT', 4, 'Masters in IT external program by unoversity of Colombo', 2, 'Year', 5600000.00, 60000.00, 20, 'active', NULL),
-(86, 17, 34, 'PHD in Engineering', 3, 'a good program', 24, 'Months', 60000000.00, 40000.00, 20, 'active', NULL),
-(87, 24, 32, 'Certification in Marketing', 3, 'A good certificate', 3, 'Year', 4500000.00, 35000.00, 20, 'active', NULL),
-(88, 18, 33, 'MSC - IT', 4, 'Masters in IT external program by unoversity of Colombo', 2, 'Year', 5600000.00, 60000.00, 20, 'active', NULL),
-(89, 17, 34, 'PHD in Engineering', 3, 'a good program', 24, 'Months', 60000000.00, 40000.00, 20, 'active', NULL);
+INSERT INTO `course` (`course_id`, `course_type_id`, `domain_id`, `subdomain_id`, `course_name`, `institute_id`, `course_description`, `course_duration`, `duration_type`, `course_fee`, `semester_fee`, `course_enter_by`, `course_status`, `course_date`) VALUES
+(62, 16, 32, 7, 'Marketing Degree', 3, 'This is a 3 years degree.', 3, 'Years', 1000000.00, 20000.00, 20, 'active', '2021-09-24'),
+(63, 16, 39, 6, 'Degree in Economics', 3, 'This is a 2 years degree.', 2, 'Years', 74444000.00, 50000.00, 20, 'active', '2021-09-24'),
+(64, 25, 34, 4, 'Engineering Dimploma', 5, 'A good course for students who are seeking to be engineers.', 24, 'Months', 12000000.00, 40000.00, 20, 'active', '2021-09-24'),
+(65, 25, 39, 6, 'Diploma in Economics', 9, 'This is a good diploma', 4, 'Months', 670000.00, 500000.00, 20, 'active', '2021-09-24'),
+(79, 17, 42, 5, 'rocket science', 3, 'Good one', 4, 'Years', 67000000.00, 670000.00, 20, 'active', '2021-09-25'),
+(83, 30, 45, 3, 'Test Course', 14, 'Test Description', 24, 'Months', 2500000.00, 20000.00, 20, 'active', '2021-09-25'),
+(90, 16, 33, 1, 'IT Cyber security  ', 12, 'Good course', 3, 'Years', 6000000.00, 45000.00, 20, 'active', '2021-12-14');
 
 -- --------------------------------------------------------
 
@@ -226,6 +222,31 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subdomain`
+--
+
+CREATE TABLE `subdomain` (
+  `subdomain_id` int(11) NOT NULL,
+  `subdomain_name` varchar(250) NOT NULL,
+  `subdomain_status` enum('active','inactive') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subdomain`
+--
+
+INSERT INTO `subdomain` (`subdomain_id`, `subdomain_name`, `subdomain_status`) VALUES
+(1, 'cyber security', 'active'),
+(2, 'securityy', 'active'),
+(3, 'Information systems', 'active'),
+(4, 'civil', 'active'),
+(5, 'spaceship', 'active'),
+(6, 'advance economics', 'active'),
+(7, 'sales', 'active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_details`
 --
 
@@ -284,6 +305,12 @@ ALTER TABLE `institute`
   ADD PRIMARY KEY (`institute_id`);
 
 --
+-- Indexes for table `subdomain`
+--
+ALTER TABLE `subdomain`
+  ADD PRIMARY KEY (`subdomain_id`);
+
+--
 -- Indexes for table `user_details`
 --
 ALTER TABLE `user_details`
@@ -297,7 +324,7 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `course_type`
@@ -316,6 +343,12 @@ ALTER TABLE `domain`
 --
 ALTER TABLE `institute`
   MODIFY `institute_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `subdomain`
+--
+ALTER TABLE `subdomain`
+  MODIFY `subdomain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_details`

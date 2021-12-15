@@ -51,8 +51,22 @@ require_once('config.php');
 					<label for="email"><b>Institute Name</b></label>
 					<input class="form-control" id="institute_name"  type="text" name="institute_name" required>
 
+
+					<label for="email"><b>Institute Type</b></label>
+					<!-- <input class="form-control" id="institute_type"  type="text" name="institute_type" required> -->
+					<select class="form-control" id="institute_type" name="institute_type" required>
+						<option value="Private">Private</option>
+    					<option value="Government">Government</option>
+					</select>	
+
+					<label for="email"><b>Institute Contact Number</b></label>
+					<input class="form-control" id="institute_contact"  type="text" name="institute_contact" required>
+
 					<label for="email"><b>Institute Address</b></label>
 					<input class="form-control" id="institute_address"  type="text" name="institute_address" required>
+
+					<label for="email"><b>Institute Located City</b></label>
+					<input class="form-control" id="institute_city"  type="text" name="institute_city" required>
 
 					<label for="email"><b>Institute Description</b></label>
 					<input class="form-control" id="institute_description"  type="text" name="institute_description" required>
@@ -102,7 +116,10 @@ require_once('config.php');
 
 
 			var institute_name = $('#institute_name').val();
+			var institute_type = $('#institute_type').val();
+			var institute_contact = $('#institute_contact').val();
 			var institute_address	= $('#institute_address').val();
+			var institute_city	= $('#institute_city').val();
 			var institute_description	= $('#institute_description').val();
 			var institute_status 		= 'Active';
 
@@ -114,7 +131,7 @@ require_once('config.php');
 				$.ajax({
 					type: 'POST',
 					url: 'institute_registration_fetch.php',
-					data: {user_email: user_email,user_password: user_password,user_name: user_name,user_type: user_type,user_status: user_status,institute_name:institute_name,institute_address: institute_address,institute_description:institute_description,institute_status: institute_status},
+					data: {user_email: user_email,user_password: user_password,user_name: user_name,user_type: user_type,user_status: user_status,institute_name:institute_name,institute_type:institute_type,  institute_contact:institute_contact,institute_address: institute_address, institute_city:institute_city, institute_description:institute_description,institute_status: institute_status},
 					success: function(data){
 					Swal.fire({
 								'title': 'Successful',
