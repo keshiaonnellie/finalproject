@@ -6,6 +6,11 @@ include('database_connection.php');
 include('function.php');
 
 $query = '';
+if($_SESSION['type'] == 'Instructor')
+{
+
+	
+}
 
 $output = array();
 $query .= "
@@ -17,31 +22,10 @@ INNER JOIN institute ON institute.institute_id = course.institute_id
 INNER JOIN user_details ON user_details.user_id = course.course_enter_by 
 ";
 
-if(isset($_POST["search"]["value"]))
-{
-	$query .= 'WHERE domain.domain_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR course_type.course_type_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR subdomain.subdomain_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR course.course_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR institute.institute_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR course.course_duration LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR course.course_id LIKE "%'.$_POST["search"]["value"].'%" ';
-}
 
-if(isset($_POST['order']))
-{
-	$query .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
-}
-else
-{
-	$query .= 'ORDER BY course_id DESC ';
-}
 
-if($_POST['length'] != -1)
-{
-	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-}
+
+$query .= "WHERE course_enter_by=".$_SESSION['user_id'] ;
 $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
