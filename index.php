@@ -81,15 +81,13 @@ include('database_connection.php');
                                  }else if($_SESSION['type'] == 'Student')
                                  {
                                  ?>
-                                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="coursetype.php">Course Types</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="domian.php">Course Domains</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="subdomain.php">Sub Domains</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li> 
                                  <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
-                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Upload</a></li>   
-                                 <li class="nav-item"><a class="nav-link"href="profile.php"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
-                                 <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
+                                 <li class="nav-item"><a class="nav-link" href="bulk_institutes.php">Favorite</a></li>   
+                                 <li class="nav-item"><a class="nav-link" href="compair.php">Compare</a></li>  
+                                 <li class="nav-item"><a class="nav-link" href="profile.php" title="Profile"><i class="fa fa-user" style="font-size:30px;color:white"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="logout.php" title="Loguot"><i class="fa fa-sign-out" style="font-size:30px;color:red"></i></a></li> 
                                  
 
                                  <?php
@@ -113,7 +111,7 @@ include('database_connection.php');
                                 ?>  
 
    
-                                <li class="nav-item"><a class="nav-link" href="course.php">Courses</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="student_course.php">Courses</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="institute.php">Institutes</a></li> 
                                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>                            
                                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>   
